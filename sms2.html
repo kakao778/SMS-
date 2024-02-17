@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emergency Alert</title>
+    <style>
+        .alert-box {
+            width: fit-content;
+            padding: 20px;
+            background-color: #f44336;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 10px; /* 알림 상자 사이 간격 조절 */
+        }
+        #footer {
+            text-align: center;
+        }
+        #footer button {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="alert-box" onclick="window.location.href = 'sms4.html';">
+        <h1>Fire Alert</h1>
+        <p>031-973-7898 번호로 실제 상황입니다. 화재가 발생하였으니 건물 내부 전 인원들은 요진 타워의 소방 대장 및 자위 소방대원들의 안내에 따라 당황하지 마시고 신속하게 건물 외부로 대피하여 주시길 바랍니다. 해당 건물의 비상 대응팀은 즉시 화재 발생 위치로 이동해 주시길 바랍니다. 또한, 해당 건물의 비상 대응팀은 상황 발생 ~ 상황 종료 시 까지 소방안전관리자의 명령에 따라 상황 종료가 될 때까지 소방 활동에 적극적으로 이행해 주시길 바랍니다. 건물 관리에 불편을 끼쳐 모든 분들께 사죄드립니다. 원활한 소방 활동을 위해 협조 부탁드립니다.</p>
+    </div>
+    <div id="footer">
+        <button onclick="window.location.href = 'sms5.html';">다른 내용의 문자 보내기</button>
+    </div>
+</body>
+</html>

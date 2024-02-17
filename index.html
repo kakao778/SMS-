@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>홈페이지</title>
+  <style>
+    body {
+      background-color: black;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .square {
+      width: 15cm;
+      height: 15cm;
+      background-color: skyblue;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+    }
+    .input {
+      margin-bottom: 10px;
+    }
+    .button {
+      padding: 10px;
+      background-color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .title {
+      font-size: 20pt;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="square">
+      <div class="title">요진타워 SMS 서비스 시스템</div>
+      <input type="text" class="input" id="username" placeholder="아이디" onkeydown="handleKeyPress(event)">
+      <input type="password" class="input" id="password" placeholder="비밀번호" onkeydown="handleKeyPress(event)">
+      <input type="checkbox" id="autoLogin"> 자동로그인
+      <button class="button" onclick="login()">로그인</button>
+    </div>
+  </div>
+  <script>
+    function login() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      // Check if autoLogin checkbox is checked
+      var autoLoginChecked = document.getElementById('autoLogin').checked;
+      if (autoLoginChecked) {
+        // Implement auto login functionality (e.g., storing login info and automatically log in next time)
+        alert('자동로그인이 활성화되었습니다.');
+      } else {
+        alert('자동로그인이 비활성화되었습니다.');
+      }
+      // Add the additional login credentials in the form of an object
+      var credentials = [
+        { username: 'yj0030', password: 'yojin123*' },
+        { username: 'm1101', password: '1709' }
+      ];
+
+      // Check if the entered credentials match any of the predefined sets
+      var validCredentials = false;
+      for (var i = 0; i < credentials.length; i++) {
+        if (username === credentials[i].username && password === credentials[i].password) {
+          validCredentials = true;
+          break;
+        }
+      }
+      if (validCredentials) {
+        window.location.href = 'sms.html';
+      } else {
+        alert('로그인에 실패했습니다.');
+      }
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        login();
+      }
+    }
+  </script>
+</body>
+</html>

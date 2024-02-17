@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Message</title>
+</head>
+<body>
+    <h1>Send Message</h1>
+    <script>
+        // 메시지 발송 함수
+        function send_message(access_token) {
+            var API_URL = "https://message.ppurio.com";
+            var SENDER = "0319737898";
+            var RECIPIENTS = ["01025824518"];
+            var MESSAGE = "요진타워 비상 연락 문자 발송 테스트입니다.";
+
+            var headers = {
+                "Authorization": "Bearer " + access_token,
+                "Content-Type": "application/json"
+            };
+
+            var targets = RECIPIENTS.map(function(recipient) {
+                return {"to": recipient};
+            });
+
+            var payload = {
+                "account": "yj0030",
+                "messageType": "SMS",
+                "content": MESSAGE,
+                "from": SENDER,
+                "duplicateFlag": "N",
+                "refKey": "ref_key_example",
+                "targetCount": RECIPIENTS.length,
+                "targets": targets
+            };
+
+            return fetch(API_URL + "/v1/message", {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .catch(error => {
+                console.error("An error occurred:", error);
+                return null;
+            });
+        }
+
+        function main() {
+            console.log("Sending message...");
+            var ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50IjoiZ0xKSTg0c2VFMXoxeHk1eHEvUFZCdz09IiwiYWxsb3dlZElwTGlzdCI6Ii9iYms0NFFYeG1OK0JVeTFscGVYWmF1aHNiUzQ1SEExQ09JWTErbmVmNzZHK2hlRUhNeWpHcDNQczdaOGwxVHF0TWNsTE4vWVduTjMxYkVTT1l6TERBPT0iLCJyYXRlTGltaXQiOiJ0WmJ4c0ZtSndMZGZiU1RFS2RkWnFRPT0iLCJpYXQiOjE3MDgxMzY1MDgsImV4cCI6MTcwODIyMjkwOCwiaXNzIjoibWVzc2FnZS5wcHVyaW8uY29tIn0.LVfJUDQNCsOycUIeO1WvrWolRbb7H2DXl22c_bOK858";
+            send_message(ACCESS_TOKEN)
+            .then(response_data => {
+                if (response_data && 'messageKey' in response_data) {
+                    console.log("Message successfully sent. Message Key:", response_data['messageKey']);
+                } else {
+                    console.error("Failed to send the message.");
+                }
+            });
+        }
+
+        main();
+    </script>
+</body>
+</html>

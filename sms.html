@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SMS 발송</title>
+  <style>
+    body {
+      background-color: white;
+    }
+    .container {
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .roomSquare {
+      width: 8cm;
+      height: 8cm;
+      background-color: skyblue;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    #room1 {
+      bottom: 25%;
+      left: 25%;
+    }
+    #room2 {
+      bottom: 25%;
+      right: 25%;
+    }
+    .button {
+      padding: 10%;
+      background-color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .title {
+      font-size: 300%;
+      font-weight: bold;
+      margin-bottom: 30px;
+      border-radius: 90px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="room1" onclick="goToRoom1()">
+    <div class="roomSquare">
+      <div class="title">기전실</div>
+    </div>
+  </div>
+  <div class="container" id="room2" onclick="goToRoom2()">
+    <div class="roomSquare">
+      <div class="title">관리실</div>
+    </div>
+  </div>
+  <script>
+    function goToRoom1() {
+      window.location.href = 'sms2.html';
+    }
+    function goToRoom2() {
+      window.location.href = 'sms3.html';
+    }
+  </script>
+</body>
+</html>
